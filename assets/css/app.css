@@ -1,0 +1,9 @@
+body
+{
+    margin: 16px;
+}
+
+.step-active
+{
+    color: #f00;
+}

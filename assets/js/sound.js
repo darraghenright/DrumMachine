@@ -34,7 +34,7 @@ var Sound = (function() {
 
     hz = hz || 440;
     wf = wf || Wave.SINE;
-    ms = ms || 30;
+    ms = ms || 40;
 
     this.play = function() {
 

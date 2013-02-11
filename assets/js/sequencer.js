@@ -19,9 +19,9 @@ var Sequencer = function() {
    * @type {Object}
    */
   this.patterns = {
-    kick:  [1, 0, 1, 0, 0, 0, 0, 1],
+    kick:  [1, 0, 0, 1, 0, 0, 1, 0],
     snare: [0, 0, 0, 0, 1, 0, 0, 0],
-    hats:  [1, 0, 0, 1, 0, 0, 1, 0]
+    hats:  [0, 0, 1, 0, 0, 0, 1, 0]
   };
 
   /**
@@ -40,7 +40,7 @@ var Sequencer = function() {
    */
   this.update = function(step) {
 
-    console.log('step: ', step);
+    $('#step').trigger('step', step); // pretty manky
 
     for (var inst in this.patterns) {
       if (this.patterns[inst][step]) {
@@ -61,6 +61,13 @@ var Sequencer = function() {
     }
   };
 
-  // init object
+  /**
+   * reset()
+   * Reset stepper to zero
+   */
+  this.reset = function() {
+    this.stepper.reset();
+  };
+
   this.init();
 };

@@ -1,6 +1,7 @@
 /*jshint globalstrict: true */
 /*global Sequencer: true */
 /*global Sound: true */
+/*global Wave: true */
 /*global $: true */
 
 'use strict';
@@ -15,19 +16,29 @@
   // cool stuff, randomise patterns, randomise pitch etc. shuffle
 
   // declare
-  var seq, btn;
+  var seq,
+      btnToggle,
+      btnReset;
 
-  // assign
   seq = new Sequencer();
-  btn = $('#btn-run');
 
-  // add some crude sounds
-  seq.sounds.kick  = new Sound(110);
-  seq.sounds.snare = new Sound(320);
-  seq.sounds.hats  = new Sound(10000);
+  seq.sounds.kick  = new Sound(80,   Wave.SINE, 100);
+  seq.sounds.snare = new Sound(320,  Wave.TRIANGLE);
+  seq.sounds.hats  = new Sound(8000, Wave.SQUARE);
 
-  // btn click handler
-  btn.on('click', function() {
+  btnToggle = $('#btn-toggle');
+  btnReset  = $('#btn-reset');
+
+  btnToggle.on('click', function() {
     seq.toggle();
   });
+
+  btnReset.on('click', function() {
+    seq.reset();
+  });
+
+  $('#step').on('step', function(e, step) {
+    $(this).text(step);
+  });
+
 })();

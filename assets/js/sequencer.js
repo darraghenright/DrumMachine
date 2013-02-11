@@ -8,19 +8,36 @@
  */
 var Sequencer = function() {
 
+  /**
+   * sounds
+   * @type {Object}
+   */
   this.sounds = {};
 
+  /**
+   * patterns
+   * @type {Object}
+   */
   this.patterns = {
     kick:  [1, 0, 1, 0, 0, 0, 0, 1],
     snare: [0, 0, 0, 0, 1, 0, 0, 0],
     hats:  [1, 0, 0, 1, 0, 0, 1, 0]
   };
 
-  this.init = function(s) {
+  /**
+   * init()
+   * Create stepper object
+   * Wire up sequencer and stepper
+   */
+  this.init = function() {
     this.stepper = new Stepper();
     this.stepper.attach(this);
   };
 
+  /**
+   * update()
+   * @param  {Number} step
+   */
   this.update = function(step) {
 
     console.log('step: ', step);
@@ -32,6 +49,10 @@ var Sequencer = function() {
     }
   };
 
+  /**
+   * toggle()
+   * Play/pause sequencer
+   */
   this.toggle = function() {
     if (this.stepper.isRunning) {
       this.stepper.stop();
@@ -40,5 +61,6 @@ var Sequencer = function() {
     }
   };
 
+  // init object
   this.init();
 };

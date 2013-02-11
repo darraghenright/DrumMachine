@@ -5,6 +5,7 @@
 
 /**
  * Wave
+ *  Some waveform consts
  */
 var Wave = {
   SINE: 0,
@@ -15,6 +16,8 @@ var Wave = {
 
 /**
  * Sound
+ *
+ * A very basic sound module (for now)
  */
 var Sound = (function() {
 
